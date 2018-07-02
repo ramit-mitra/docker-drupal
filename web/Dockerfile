@@ -10,17 +10,18 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" &&
     php composer-setup.php && \
     php -r "unlink('composer-setup.php');"
 
-# RUN rm -rf /var/www/html && \
-#     mkdir /var/www/html && \
-#     git clone https://github.com/gobinathm/drupal-quickstart.git /var/www/html/
-
 WORKDIR /var/www/html/
 
+# Setup a fresh drupal installation using composer
 RUN git init && \
     git remote add origin https://github.com/gobinathm/drupal-quickstart.git && \
     git fetch && \
     git checkout 8.x && \
     git pull
+
+# ALTERNATIVELY, if you want to build your own code
+# keep the code in a directory called drupal, and it will be copied here
+# COPY ./drupal/ .
 
 RUN ./composer.phar install -o
 
