@@ -32,6 +32,12 @@ services:
     - "3323:3306"
     # container_name: ramit-d8-db
   postgres:
+    # During initial Drupal setup,
+    # Database type: PostgreSQL
+    # Database name: postgres
+    # Database username: postgres
+    # Database password: example
+    # ADVANCED OPTIONS; Database host: postgres
     image: postgres:10
     restart: on-failure
     environment:
