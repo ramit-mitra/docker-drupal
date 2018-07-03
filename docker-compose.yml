@@ -1,14 +1,15 @@
 version: '3.1'
 services:
   web:
-    build: web/
-    image: ramitmitra/drupal-8
+    # build: web/
+    # image: ramitmitra/drupal-8
+    image: drupal:8-apache
     restart: on-failure
     links:
     - db
     ports:
-    - "80:8080"
-    - "443:8081"
+    - "8080:80"
+    - "8443:443"
     volumes:
       - /var/www/html/modules
       - /var/www/html/profiles
@@ -24,7 +25,10 @@ services:
     image: mysql
     restart: on-failure
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: ramit
-      MYSQL_PASSWORD: 12345@1!
+    - MYSQL_ROOT_PASSWORD=letmein@HailKingRamit
+    - MYSQL_DATABASE=drupal
+    - MYSQL_USER=ramit
+    - MYSQL_PASSWORD=rmawmasfck
+    ports:
+    - "3323:3306"
     container_name: ramit-d8-db
