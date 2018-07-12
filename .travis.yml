@@ -1,0 +1,26 @@
+sudo: required
+
+language: java
+
+addons:
+  apt:
+    packages:
+      - xsltproc
+      - libxml2-utils
+
+services:
+  - docker
+
+before_install:
+- git clone -b stability-inspect https://github.com/ramit-mitra/docker-drupal.git
+
+install:
+- cd docker-drupal && \
+  docker build -t ramitmitra/docker-drupal .
+- docker-compose up
+- docker ps -a
+
+script:
+  - java -version
+  - whoami
+  - ls -la
