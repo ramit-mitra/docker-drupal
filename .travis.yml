@@ -16,8 +16,8 @@ before_install:
 
 install:
 - cd docker-drupal
-- docker-compose up
-- docker ps -a
+- docker-compose up -d
+- docker ps
 
 script:
   - java -version
