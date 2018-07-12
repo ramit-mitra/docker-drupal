@@ -15,8 +15,7 @@ before_install:
 - git clone https://github.com/ramit-mitra/docker-drupal.git
 
 install:
-- cd docker-drupal && \
-  docker build -t ramitmitra/docker-drupal .
+- cd docker-drupal
 - docker-compose up
 - docker ps -a
 
